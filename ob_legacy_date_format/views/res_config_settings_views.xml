@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.ob.legacy.date.format</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <setting id="languages_setting" position="after">
+                <setting
+                    id="ob_ddmmyyyy_date_format_setting"
+                    string="Date Format"
+                    help="Display standard Odoo dates as DD/MM/YYYY instead of abbreviated month names.">
+                    <field name="ob_enable_ddmmyyyy_date_format"/>
+                    <div class="content-group" invisible="not ob_enable_ddmmyyyy_date_format">
+                        <span class="text-muted">Example: 31/01/2026</span>
+                    </div>
+                </setting>
+            </setting>
+        </field>
+    </record>
+</odoo>

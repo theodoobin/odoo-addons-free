@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Legacy DD/MM/YYYY Date Format</title>
+</head>
+<body>
+<div style="max-width: 980px; margin: 0 auto; padding: 24px 16px; font-family: Arial, Helvetica, sans-serif; color: #172033; line-height: 1.55;">
+    <table style="width: 100%; border: 1px solid #dbe7f4; border-radius: 10px; background: #f7fbff; border-collapse: separate; border-spacing: 0;">
+        <tr>
+            <td style="width: 150px; padding: 28px 24px; vertical-align: middle;">
+                <img src="icon.png" width="120" height="120" alt="The Odoo Bin"
+                     style="display: block; width: 120px; height: 120px; border-radius: 12px;"/>
+            </td>
+            <td style="padding: 28px 28px 28px 0; vertical-align: middle;">
+                <div style="margin: 0 0 8px; color: #c4202f; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">
+                    Odoo 19 Date Format Utility
+                </div>
+                <div style="margin: 0; color: #174c9c; font-size: 34px; line-height: 1.2; font-weight: 700;">
+                    Legacy DD/MM/YYYY Date Format
+                </div>
+                <p style="max-width: 680px; margin: 14px 0 0; color: #5f6b7a; font-size: 16px;">
+                    Restore a clean numeric date format across Odoo 19 so users see
+                    dates like 31/01/2026 instead of abbreviated month formats.
+                </p>
+            </td>
+        </tr>
+    </table>
+
+    <div style="margin-top: 22px; padding: 16px 20px; border-left: 5px solid #2489b6; background: #eef8fc; border-radius: 8px; color: #172033; font-size: 15px;">
+        Enable the option from General Settings and the module applies DD/MM/YYYY
+        consistently across languages, backend list views, and backend form views.
+    </div>
+
+    <table style="width: 100%; margin-top: 24px; border-collapse: separate; border-spacing: 14px;">
+        <tr>
+            <td style="width: 50%; padding: 20px; border: 1px solid #dbe7f4; border-radius: 8px; vertical-align: top; background: #ffffff;">
+                <div style="margin: 0 0 10px; color: #174c9c; font-size: 21px; font-weight: 700;">Global Language
+                    Update
+                </div>
+                <p style="margin: 0; color: #5f6b7a; font-size: 15px;">
+                    Applies the DD/MM/YYYY format to all active and inactive languages,
+                    keeping date display consistent for every user language.
+                </p>
+            </td>
+            <td style="width: 50%; padding: 20px; border: 1px solid #dbe7f4; border-radius: 8px; vertical-align: top; background: #ffffff;">
+                <div style="margin: 0 0 10px; color: #174c9c; font-size: 21px; font-weight: 700;">Settings Controlled
+                </div>
+                <p style="margin: 0; color: #5f6b7a; font-size: 15px;">
+                    Adds a simple Date Format option under General Settings, allowing
+                    administrators to enable or disable the behavior when needed.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 50%; padding: 20px; border: 1px solid #dbe7f4; border-radius: 8px; vertical-align: top; background: #ffffff;">
+                <div style="margin: 0 0 10px; color: #174c9c; font-size: 21px; font-weight: 700;">Backend View
+                    Coverage
+                </div>
+                <p style="margin: 0; color: #5f6b7a; font-size: 15px;">
+                    Updates standard backend list and form date display so abbreviated
+                    month names are replaced with the numeric format.
+                </p>
+            </td>
+            <td style="width: 50%; padding: 20px; border: 1px solid #dbe7f4; border-radius: 8px; vertical-align: top; background: #ffffff;">
+                <div style="margin: 0 0 10px; color: #174c9c; font-size: 21px; font-weight: 700;">Reversible Changes
+                </div>
+                <p style="margin: 0; color: #5f6b7a; font-size: 15px;">
+                    Original language date formats are backed up and restored when the
+                    feature is disabled or the module is uninstalled.
+                </p>
+            </td>
+        </tr>
+    </table>
+
+    <div style="margin-top: 24px; padding: 24px; border: 1px solid #dbe7f4; border-radius: 8px; background: #ffffff;">
+        <div style="margin: 0 0 12px; color: #174c9c; font-size: 23px; font-weight: 700;">How It Works</div>
+        <ol style="margin: 0 0 18px; padding-left: 22px; color: #5f6b7a; font-size: 15px;">
+            <li style="margin: 8px 0;">Install the module from Apps.</li>
+            <li style="margin: 8px 0;">Open General Settings and enable the Date Format option.</li>
+            <li style="margin: 8px 0;">Upgrade or refresh backend assets if the module was already installed.</li>
+            <li style="margin: 8px 0;">Use Odoo with DD/MM/YYYY date display across supported backend views.</li>
+        </ol>
+        <div style="padding: 10px; border: 1px solid #dbe7f4; border-radius: 8px; background: #f3f8fd;">
+            <img src="date_format_settings.png" width="940" alt="Date Format setting enabled in Odoo General Settings"
+                 style="display: block; width: 100%; max-width: 940px; height: auto; border-radius: 6px;"/>
+            <p style="margin: 10px 0 0; color: #5f6b7a; font-size: 14px; text-align: center;">
+                Enable Date Format from General Settings to apply DD/MM/YYYY display.
+            </p>
+        </div>
+    </div>
+
+    <div style="margin-top: 24px; padding: 24px; border: 1px solid #dbe7f4; border-radius: 8px; background: #ffffff;">
+        <div style="margin: 0 0 12px; color: #174c9c; font-size: 23px; font-weight: 700;">Highlights</div>
+        <ul style="margin: 0; padding-left: 20px; color: #5f6b7a; font-size: 15px;">
+            <li style="margin: 8px 0;">Built for Odoo 19.</li>
+            <li style="margin: 8px 0;">No new access rights or menu clutter.</li>
+            <li style="margin: 8px 0;">Suitable for teams that prefer numeric day/month/year dates.</li>
+        </ul>
+    </div>
+
+    <div style="margin-top: 24px; padding: 22px 24px; border-radius: 8px; border: 2px solid #174c9c; background: #f0f6ff;">
+        <div style="margin: 0 0 8px; color: #0d2e5c; font-size: 22px; font-weight: 700;">Odoo Support and
+            Customization
+        </div>
+        <p style="margin: 0; color: #1a1a1a; font-size: 15px; line-height: 1.5;">
+            For Odoo-related queries or customization requests, contact
+            <a href="mailto:theodoobin@gmail.com" style="color: #174c9c; font-weight: 700; text-decoration: underline;">theodoobin@gmail.com</a>.
+        </p>
+    </div>
+</div>
+</body>
+</html>
