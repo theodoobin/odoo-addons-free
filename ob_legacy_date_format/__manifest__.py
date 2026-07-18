@@ -2,7 +2,7 @@
 
 {
     "name": "Legacy Date Format",
-    "version": "19.0.1.0.4",
+    "version": "19.0.1.0.5",
     "category": "Extra Tools",
     "summary": "Show dates as DD/MM/YYYY in Odoo 19",
     "description": """
