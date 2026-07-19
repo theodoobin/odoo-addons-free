@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+<t t-name="ob_quick_access_apps.HomeMenu" t-inherit="web_enterprise.HomeMenu" t-inherit-mode="extension" t-translation="off">
+    <xpath expr="//div[hasclass('o_apps')]" position="before">
+        <section t-if="obShouldDisplayQuickAccess" class="o_ob_quick_access mt-5" t-att-class="{ o_ob_quick_access_editing: state.obQuickAccessEdit }">
+            <div class="o_ob_quick_access_header d-flex align-items-center justify-content-between mb-3 px-1">
+                <div class="o_ob_quick_access_title d-flex align-items-center gap-2 fw-bold">
+                    <i class="fa fa-star"/>
+                    <span>Quick Access</span>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <button t-if="state.obQuickAccessEdit" type="button" class="btn btn-link btn-sm text-decoration-none p-0" t-att-disabled="state.obQuickAccessSaving" t-on-click.prevent="obResetQuickAccess">
+                        Reset
+                    </button>
+                    <button type="button" class="btn btn-link btn-sm text-decoration-none p-0" t-att-disabled="state.obQuickAccessSaving" t-on-click.prevent="obToggleQuickAccessEdit">
+                        <t t-esc="state.obQuickAccessEdit ? 'Done' : 'Edit'"/>
+                    </button>
+                </div>
+            </div>
+            <div t-if="obQuickAccessApps.length" class="o_ob_quick_access_apps row user-select-none mx-0">
+                <div t-foreach="obQuickAccessApps" t-as="app" t-key="'ob_quick_access_' + app.id" class="col-3 col-md-2 o_ob_quick_access_item mb-3 px-0">
+                    <div class="o_ob_quick_access_card position-relative mx-auto">
+                        <a class="o_app o_menuitem d-flex flex-column rounded-3 justify-content-start align-items-center w-100 h-100 p-1 p-md-2"
+                            t-att-data-menu-xmlid="app.xmlid"
+                            t-att-href="app.href"
+                            t-on-click.prevent="() => this._onAppClick(app)"
+                            >
+                            <img t-if="app.webIconData" class="o_app_icon rounded-3"
+                                t-attf-src="{{app.webIconData}}"
+                            />
+                            <div t-else="" class="o_app_icon position-relative d-flex justify-content-center align-items-center p-2 rounded-3 ratio ratio-1x1"
+                                t-attf-style="background-color: {{app.webIcon.backgroundColor}};"
+                            >
+                                <i t-attf-class="{{app.webIcon.iconClass}} position-relative w-auto h-auto" t-attf-style="color: {{app.webIcon.color}};"/>
+                            </div>
+                            <div class="o_caption w-100 text-center text-truncate mt-2" t-esc="app.label or app.name"/>
+                        </a>
+                        <div t-if="state.obQuickAccessEdit" class="dropdown o_ob_quick_access_menu position-absolute top-0 end-0">
+                            <button type="button" class="btn btn-sm border-0 rounded-circle" data-bs-toggle="dropdown" aria-expanded="false" title="Quick access options" t-on-click.stop="() => {}">
+                                <i class="fa fa-ellipsis-v"/>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <button type="button" class="dropdown-item" t-att-disabled="app_index === 0" t-on-click.prevent="() => this.obMoveQuickAccessApp(app, -1)">Move left</button>
+                                <button type="button" class="dropdown-item" t-att-disabled="app_index === obQuickAccessApps.length - 1" t-on-click.prevent="() => this.obMoveQuickAccessApp(app, 1)">Move right</button>
+                                <div class="dropdown-divider"/>
+                                <button type="button" class="dropdown-item text-danger" t-on-click.prevent="() => this.obRemoveQuickAccessApp(app)">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div t-elif="state.obQuickAccessEdit" class="o_ob_quick_access_empty px-2 py-3 text-center">
+                No quick access apps selected.
+            </div>
+            <div class="o_ob_quick_access_divider d-flex align-items-center mt-2">
+                <span class="o_ob_quick_access_divider_line flex-grow-1"/>
+                <span class="o_ob_quick_access_divider_handle mx-3"/>
+                <span class="o_ob_quick_access_divider_line flex-grow-1"/>
+            </div>
+        </section>
+    </xpath>
+
+    <xpath expr="//div[hasclass('o_apps')]" position="attributes">
+        <attribute name="class">o_apps row user-select-none mx-0</attribute>
+        <attribute name="t-att-class">{ 'mt-4': obShouldDisplayQuickAccess, 'mt-5': !obShouldDisplayQuickAccess }</attribute>
+    </xpath>
+
+    <xpath expr="//div[hasclass('o_apps')]//a[hasclass('o_app')]" position="inside">
+        <button t-if="obQuickAccessEnabled &amp;&amp; state.obQuickAccessEdit" type="button"
+            class="o_ob_quick_access_pin btn btn-sm rounded-circle position-absolute d-flex align-items-center justify-content-center"
+            t-att-class="{ 'o_ob_quick_access_pin_active': obIsQuickAccessApp(app) }"
+            t-att-title="obIsQuickAccessApp(app) ? 'Remove from Quick Access' : 'Add to Quick Access'"
+            t-att-aria-label="obIsQuickAccessApp(app) ? 'Remove from Quick Access' : 'Add to Quick Access'"
+            t-att-disabled="state.obQuickAccessSaving"
+            t-on-click.stop.prevent="() => this.obToggleAppQuickAccess(app)">
+            <i t-att-class="obIsQuickAccessApp(app) ? 'fa fa-star' : 'fa fa-plus'"/>
+        </button>
+    </xpath>
+
+    <xpath expr="//div[@id='result_menu_0']" position="attributes">
+        <attribute name="t-elif">!displayedApps.length &amp;&amp; !obShouldDisplayQuickAccess</attribute>
+    </xpath>
+</t>
+
+</templates>

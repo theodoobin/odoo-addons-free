@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_users_form_ob_quick_access_apps" model="ir.ui.view">
+        <field name="name">res.users.form.ob.quick.access.apps</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='preferences']//group[@name='other_preferences']" position="inside">
+                <field name="ob_show_quick_access_apps"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_users_form_simple_modif_ob_quick_access_apps" model="ir.ui.view">
+        <field name="name">res.users.preferences.form.ob.quick.access.apps</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='preferences_page']//group[@name='other_preferences']" position="inside">
+                <field name="ob_show_quick_access_apps"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

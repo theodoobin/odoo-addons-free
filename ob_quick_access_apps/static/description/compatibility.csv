@@ -1,0 +1,5 @@
+Topic,Details
+Edition,Odoo 19 Enterprise only
+Dependency,web_enterprise
+Future Versions,Odoo 17 and Odoo 18 require separate version-specific module builds
+User Preference,Each user can enable or disable Quick Access Apps from Preferences
