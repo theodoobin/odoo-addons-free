@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Inventory Stock Ageing for Odoo 19</title>
+</head>
+<body>
+<div style="max-width: 980px; margin: 0 auto; padding: 24px 16px; font-family: Arial, Helvetica, sans-serif; color: #172033; line-height: 1.55;">
+    <table style="width: 100%; border: 1px solid #dbe7f4; border-radius: 10px; background: #f7fbff; border-collapse: separate; border-spacing: 0;">
+        <tr>
+            <td style="width: 150px; padding: 28px 24px; vertical-align: middle;">
+                <img src="icon.png" width="120" height="120" alt="Inventory Stock Ageing icon"
+                     style="display: block; width: 120px; height: 120px; border-radius: 18px;"/>
+            </td>
+            <td style="padding: 28px 28px 28px 0; vertical-align: middle;">
+                <div style="margin: 0 0 8px; color: #c4202f; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">
+                    Odoo 19 Inventory Reporting
+                </div>
+                <div style="margin: 0; color: #174c9c; font-size: 34px; line-height: 1.2; font-weight: 700;">
+                    Inventory Stock Ageing
+                </div>
+                <p style="max-width: 680px; margin: 14px 0 0; color: #5f6b7a; font-size: 16px;">
+                    Understand how long current inventory has remained in stock with
+                    an interactive pivot report for quantities and values.
+                </p>
+            </td>
+        </tr>
+    </table>
+
+    <div style="margin-top: 22px; padding: 10px; border: 1px solid #dbe7f4; border-radius: 8px; background: #f3f8fd;">
+        <img src="cover.gif" width="560" alt="Animated Inventory Stock Ageing report preview"
+             style="display: block; width: 100%; max-width: 560px; height: auto; margin: 0 auto; border-radius: 6px;"/>
+        <p style="margin: 10px 0 0; color: #5f6b7a; font-size: 14px; text-align: center;">
+            Follow current stock across five ageing buckets, from recent receipts to inventory older than 120 days.
+        </p>
+    </div>
+
+    <div style="margin-top: 22px; padding: 16px 20px; border-left: 5px solid #2489b6; background: #eef8fc; border-radius: 8px; color: #172033; font-size: 15px;">
+        A set-based PostgreSQL engine follows Odoo 19's remaining-stock rules without
+        running a separate valuation pass for every product. The private snapshot refreshes
+        each time it is opened from <strong>Inventory &gt; Reporting &gt; Stock Ageing</strong>.
+    </div>
+
+    <div style="margin-top: 24px; padding: 24px; border: 1px solid #dbe7f4; border-radius: 8px; background: #ffffff;">
+        <div style="margin: 0 0 8px; color: #174c9c; font-size: 23px; font-weight: 700; text-align: center;">
+            Report Preview
+        </div>
+        <p style="margin: 0 0 18px; color: #5f6b7a; font-size: 15px; text-align: center;">
+            Open Stock Ageing from the Inventory reporting menu and analyse current stock directly in the pivot view.
+        </p>
+
+        <div style="padding: 10px; border: 1px solid #dbe7f4; border-radius: 8px; background: #f7fbff;">
+            <img src="1.png" width="927" alt="Stock Ageing option in the Odoo Inventory reporting menu"
+                 style="display: block; width: 100%; height: auto; margin: 0 auto; border-radius: 6px;"/>
+            <p style="margin: 10px 0 2px; color: #5f6b7a; font-size: 14px; text-align: center;">
+                Access the report from <strong>Inventory &gt; Reporting &gt; Stock Ageing</strong>.
+            </p>
+        </div>
+
+        <div style="margin-top: 18px; padding: 10px; border: 1px solid #dbe7f4; border-radius: 8px; background: #f7fbff;">
+            <img src="2.png" width="1919" alt="Inventory Stock Ageing pivot report with quantity and value buckets"
+                 style="display: block; width: 100%; height: auto; margin: 0 auto; border-radius: 6px;"/>
+            <p style="margin: 10px 0 2px; color: #5f6b7a; font-size: 14px; text-align: center;">
+                Review remaining quantity and value by category, product, and ageing bucket.
+            </p>
+        </div>
+    </div>
+
+    <table style="width: 100%; margin-top: 24px; border-collapse: separate; border-spacing: 14px;">
+        <tr>
+            <td style="width: 50%; padding: 20px; border: 1px solid #dbe7f4; border-radius: 8px; vertical-align: top; background: #ffffff;">
+                <div style="margin: 0 0 10px; color: #174c9c; font-size: 21px; font-weight: 700;">Pivot-first Analysis</div>
+                <p style="margin: 0; color: #5f6b7a; font-size: 15px;">
+                    Opens directly in a pivot view, with product category and product
+                    on rows and ageing buckets across columns.
+                </p>
+            </td>
+            <td style="width: 50%; padding: 20px; border: 1px solid #dbe7f4; border-radius: 8px; vertical-align: top; background: #ffffff;">
+                <div style="margin: 0 0 10px; color: #174c9c; font-size: 21px; font-weight: 700;">Quantity and Value</div>
+                <p style="margin: 0; color: #5f6b7a; font-size: 15px;">
+                    Compare remaining quantities and inventory values using company
+                    currency and product unit-of-measure precision.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 50%; padding: 20px; border: 1px solid #dbe7f4; border-radius: 8px; vertical-align: top; background: #ffffff;">
+                <div style="margin: 0 0 10px; color: #174c9c; font-size: 21px; font-weight: 700;">Download to XLSX</div>
+                <p style="margin: 0; color: #5f6b7a; font-size: 15px;">
+                    Use Odoo's standard pivot download option to continue analysis,
+                    share results, or archive the current snapshot in Excel.
+                </p>
+            </td>
+            <td style="width: 50%; padding: 20px; border: 1px solid #dbe7f4; border-radius: 8px; vertical-align: top; background: #ffffff;">
+                <div style="margin: 0 0 10px; color: #174c9c; font-size: 21px; font-weight: 700;">Secure Multi-company Data</div>
+                <p style="margin: 0; color: #5f6b7a; font-size: 15px;">
+                    Generates a private snapshot for the logged-in Inventory Manager
+                    and includes only companies currently allowed for that user.
+                </p>
+            </td>
+        </tr>
+    </table>
+
+    <div style="margin-top: 24px; padding: 24px; border: 1px solid #dbe7f4; border-radius: 8px; background: #ffffff;">
+        <div style="margin: 0 0 14px; color: #174c9c; font-size: 23px; font-weight: 700;">Ageing Buckets</div>
+        <table style="width: 100%; border-collapse: separate; border-spacing: 8px; text-align: center;">
+            <tr>
+                <td style="padding: 14px 8px; border-radius: 8px; background: #d9f7f4; color: #075d59; font-weight: 700;">0 - 30 Days</td>
+                <td style="padding: 14px 8px; border-radius: 8px; background: #e7f2fa; color: #174c9c; font-weight: 700;">31 - 60 Days</td>
+                <td style="padding: 14px 8px; border-radius: 8px; background: #eef0f7; color: #394b69; font-weight: 700;">61 - 90 Days</td>
+                <td style="padding: 14px 8px; border-radius: 8px; background: #fff0e8; color: #a14d2f; font-weight: 700;">91 - 120 Days</td>
+                <td style="padding: 14px 8px; border-radius: 8px; background: #ffe3df; color: #a93434; font-weight: 700;">Over 120 Days</td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="margin-top: 24px; padding: 24px; border: 1px solid #dbe7f4; border-radius: 8px; background: #ffffff;">
+        <div style="margin: 0 0 12px; color: #174c9c; font-size: 23px; font-weight: 700;">How It Works</div>
+        <ol style="margin: 0; padding-left: 22px; color: #5f6b7a; font-size: 15px;">
+            <li style="margin: 8px 0;">Install the module on Odoo 19 with Inventory Valuation available.</li>
+            <li style="margin: 8px 0;">Open Inventory &gt; Reporting &gt; Stock Ageing.</li>
+            <li style="margin: 8px 0;">Review quantity and value by product and ageing bucket in the pivot.</li>
+            <li style="margin: 8px 0;">Filter or regroup by category, product, receipt month, or company.</li>
+            <li style="margin: 8px 0;">Choose Download XLSX from the pivot whenever an offline copy is needed.</li>
+        </ol>
+    </div>
+
+    <div style="margin-top: 24px; padding: 24px; border: 1px solid #dbe7f4; border-radius: 8px; background: #ffffff;">
+        <div style="margin: 0 0 12px; color: #174c9c; font-size: 23px; font-weight: 700;">Highlights</div>
+        <ul style="margin: 0; padding-left: 20px; color: #5f6b7a; font-size: 15px;">
+            <li style="margin: 8px 0;">Built specifically for Odoo 19 Community and Enterprise.</li>
+            <li style="margin: 8px 0;">Optimized for large catalogs with thousands of products.</li>
+            <li style="margin: 8px 0;">Supports FIFO, average cost, and standard cost products.</li>
+            <li style="margin: 8px 0;">Read-only reporting interface with no manual data maintenance.</li>
+            <li style="margin: 8px 0;">Detailed list view available alongside the pivot for receipt-level review.</li>
+            <li style="margin: 8px 0;">No external services or Python packages required.</li>
+        </ul>
+    </div>
+
+    <div style="margin-top: 24px; padding: 22px 24px; border-radius: 8px; border: 2px solid #174c9c; background: #f0f6ff;">
+        <div style="margin: 0 0 8px; color: #0d2e5c; font-size: 22px; font-weight: 700;">Odoo Support and Customization</div>
+        <p style="margin: 0; color: #1a1a1a; font-size: 15px; line-height: 1.5;">
+            For Inventory Stock Ageing support or customization requests, contact
+            <a href="mailto:theodoobin@gmail.com" style="color: #174c9c; font-weight: 700; text-decoration: underline;">theodoobin@gmail.com</a>.
+        </p>
+    </div>
+</div>
+</body>
+</html>

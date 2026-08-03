@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ob_stock_ageing_rule" model="ir.rule">
+        <field name="name">Inventory Stock Ageing: own report and allowed companies</field>
+        <field name="model_id" ref="model_ob_stock_ageing"/>
+        <field name="domain_force">[
+            ('user_id', '=', user.id),
+            ('company_id', 'in', company_ids),
+        ]</field>
+        <field name="groups" eval="[(4, ref('stock.group_stock_manager'))]"/>
+    </record>
+</odoo>

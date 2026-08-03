@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ob_stock_ageing_pivot" model="ir.ui.view">
+        <field name="name">ob.stock.ageing.pivot</field>
+        <field name="model">ob.stock.ageing</field>
+        <field name="arch" type="xml">
+            <pivot string="Inventory Stock Ageing" disable_linking="1">
+                <field name="product_categ_id" type="row"/>
+                <field name="product_id" type="row"/>
+                <field name="ageing_bucket" type="col"/>
+                <field name="remaining_qty" type="measure"/>
+                <field name="remaining_value" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_ob_stock_ageing_list" model="ir.ui.view">
+        <field name="name">ob.stock.ageing.list</field>
+        <field name="model">ob.stock.ageing</field>
+        <field name="arch" type="xml">
+            <list string="Inventory Stock Ageing" create="0" edit="0" delete="0"
+                  default_order="age_days desc, received_date, id">
+                <field name="received_date"/>
+                <field name="age_days"/>
+                <field name="ageing_bucket"/>
+                <field name="product_id"/>
+                <field name="product_categ_id" optional="show"/>
+                <field name="stock_move_id" optional="hide"/>
+                <field name="reference" optional="hide"/>
+                <field name="remaining_qty" sum="Total Remaining Quantity"/>
+                <field name="product_uom_id" groups="uom.group_uom"/>
+                <field name="remaining_value" sum="Total Remaining Value"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_ob_stock_ageing_search" model="ir.ui.view">
+        <field name="name">ob.stock.ageing.search</field>
+        <field name="model">ob.stock.ageing</field>
+        <field name="arch" type="xml">
+            <search string="Inventory Stock Ageing">
+                <field name="product_id"/>
+                <field name="product_tmpl_id"/>
+                <field name="product_categ_id"/>
+                <field name="ageing_bucket"/>
+                <field name="received_date"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <group>
+                    <filter name="group_by_product_categ" string="Product Category"
+                            context="{'group_by': 'product_categ_id'}"/>
+                    <filter name="group_by_product" string="Product"
+                            context="{'group_by': 'product_id'}"/>
+                    <filter name="group_by_ageing_bucket" string="Ageing Bucket"
+                            context="{'group_by': 'ageing_bucket'}"/>
+                    <filter name="group_by_received_date" string="Receipt Date"
+                            context="{'group_by': 'received_date:month'}"/>
+                    <filter name="group_by_company" string="Company"
+                            context="{'group_by': 'company_id'}"
+                            groups="base.group_multi_company"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_ob_stock_ageing" model="ir.actions.act_window">
+        <field name="name">Inventory Stock Ageing</field>
+        <field name="res_model">ob.stock.ageing</field>
+        <field name="view_mode">pivot,list</field>
+        <field name="search_view_id" ref="view_ob_stock_ageing_search"/>
+        <field name="context">{'pivot_measures': ['remaining_qty', 'remaining_value']}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No inventory is currently on hand.</p>
+            <p>The report is refreshed whenever it is opened from the Inventory menu.</p>
+        </field>
+    </record>
+
+    <record id="action_open_ob_stock_ageing" model="ir.actions.server">
+        <field name="name">Inventory Stock Ageing</field>
+        <field name="model_id" ref="model_ob_stock_ageing"/>
+        <field name="state">code</field>
+        <field name="group_ids" eval="[(4, ref('stock.group_stock_manager'))]"/>
+        <field name="code">action = model.action_open_report()</field>
+    </record>
+
+    <menuitem id="menu_ob_stock_ageing"
+              name="Stock Ageing"
+              parent="stock.menu_warehouse_report"
+              action="action_open_ob_stock_ageing"
+              sequence="180"
+              groups="stock.group_stock_manager"/>
+</odoo>
